@@ -2,7 +2,7 @@
 // @name        OGameSpioReportSorter
 // @namespace   ogame
 // @include     http://*.ogame.gameforge.com/game/index.php?page=messages*
-// @version     1.01
+// @version     1.02
 // @grant       none
 // ==/UserScript==
 
@@ -168,8 +168,13 @@ var grosseTransporterAM = 203;
                 isSpionagebericht: function () {
                     return this.type == "spionagebericht";
                 },
-                beute: function () {
-                    return Math.round(this.rohstoffe * this.beuteFactor);
+                beute: function (ress) {
+                    if( ress !== undefined ){
+                        return Math.round(this.rohstoffe * this.beuteFactor);
+                    } else {
+                        return Math.round(ress * this.beuteFactor);
+                    }
+
                 },
                 wertigkeit: function () {
                     endWhile = false;
@@ -181,12 +186,13 @@ var grosseTransporterAM = 203;
                             preBeute -= pb;
                         }
                     }
+                    preBeute = this.beute(preBeute);
 
                     if (!this.isSpionagebericht()) return Number.MAX_VALUE;
                     wertigkeit = 0;
-                    wertigkeit += (preBeute < minBeute ? Number.MIN_VALUE : preBeute);
-                    wertigkeit += this.flotte * -10;
-                    wertigkeit += this.verteidigung * -10;
+                    wertigkeit += (preBeute < minBeute ? 0 : preBeute);
+                    wertigkeit -= this.flotte;
+                    wertigkeit -= this.verteidigung;
                     return wertigkeit;
                 }
             });
