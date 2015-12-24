@@ -1,8 +1,8 @@
 ﻿// ==UserScript==
-// @name        OGameSpioReportSorter
+// @name        OGame spy report sorter
 // @namespace   ogame
 // @include     http://*.ogame.gameforge.com/game/index.php?page=messages*
-// @version     1.02
+// @version     1.03
 // @grant       none
 // @author      Doggi
 // ==/UserScript==
@@ -170,7 +170,7 @@ var grosseTransporterAM = 203;
                     return this.type == "spionagebericht";
                 },
                 beute: function (ress) {
-                    if( ress !== undefined ){
+                    if( ress === undefined ){
                         return Math.round(this.rohstoffe * this.beuteFactor);
                     } else {
                         return Math.round(ress * this.beuteFactor);
