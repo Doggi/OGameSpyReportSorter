@@ -4,6 +4,7 @@
 // @include     http://*.ogame.gameforge.com/game/index.php?page=messages*
 // @version     1.02
 // @grant       none
+// @author      Doggi
 // ==/UserScript==
 
 /** PLUGINS **/
