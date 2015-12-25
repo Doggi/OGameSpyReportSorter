@@ -3,8 +3,8 @@
 // @namespace   ogame
 // @include     http://*.ogame.gameforge.com/game/index.php?page=messages*
 // @version     1.05
-// @updateURL   https://github.com/Doggi/OGameSpioReportSorter/raw/master/OGameSpioReportSorter.user.js
-// @downloadURL https://github.com/Doggi/OGameSpioReportSorter/raw/master/OGameSpioReportSorter.user.js
+// @updateURL   https://github.com/Doggi/OGameSpyReportSorter/raw/master/OGameSpyReportSorter.user.js
+// @downloadURL https://github.com/Doggi/OGameSpyReportSorter/raw/master/OGameSpyReportSorter.user.js
 // @grant       none
 // @author      Doggi
 // ==/UserScript==
