@@ -2,7 +2,7 @@
 // @name        OGame spy report sorter
 // @namespace   ogame
 // @include     http://*.ogame.gameforge.com/game/index.php?page=messages*
-// @version     1.06
+// @version     1.07
 // @updateURL   https://github.com/Doggi/OGameSpyReportSorter/raw/master/OGameSpyReportSorter.user.js
 // @downloadURL https://github.com/Doggi/OGameSpyReportSorter/raw/master/OGameSpyReportSorter.user.js
 // @grant       none
@@ -184,7 +184,7 @@ var grosseTransporterAM = 203;
                     preBeute = this.rohstoffe;
                     pb = 0;
                     for (i = 1; pb !== null; i++) {
-                        pb = getStorageItem("spioreports_clicks_" + this.msgId + "_" + i + "_" + this.beute());
+                        pb = getStorageItem("spioreports_clicks_" + this.msgId + "_" + i + "_" + this.beute(preBeute));
                         if (pb !== null) {
                             preBeute -= pb;
                         }
