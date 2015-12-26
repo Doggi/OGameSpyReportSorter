@@ -197,6 +197,23 @@ var grosseTransporterAM = 203;
                     wertigkeit -= this.flotte;
                     wertigkeit -= this.verteidigung;
                     return wertigkeit;
+                },
+                waveStorage: null,
+                waves: function(){
+                    if (this.waveStorage !== null){
+                        return this.waveStorage;
+                    }
+                    this.waveStorage = [];
+                    rohstoffe = this.rohstoffe;
+                    for (var i=1;this.beute(rohstoffe) > minBeute; i++){
+                        this.waveStorage[i] = {
+                            wave: i,
+                            ressource: this.beute(rohstoffe)
+                        };
+                        rohstoffe = this.waveStorage[i].ressource;
+                    }
+                    return this.waveStorage;
+
                 }
             });
         });
