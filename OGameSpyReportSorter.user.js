@@ -2,7 +2,7 @@
 // @name        OGame spy report sorter
 // @namespace   ogame
 // @include     http://*.ogame.gameforge.com/game/index.php?page=messages*
-// @version     1.08
+// @version     1.09
 // @updateURL   https://github.com/Doggi/OGameSpyReportSorter/raw/master/OGameSpyReportSorter.user.js
 // @downloadURL https://github.com/Doggi/OGameSpyReportSorter/raw/master/OGameSpyReportSorter.user.js
 // @grant       none
@@ -69,7 +69,7 @@ function removeStorageItem(key){
 }
 
 function getSpyReportClick(name){
-    getStorageItem(name);
+    return getStorageItem(name);
 }
 
 function renmoveSpyReportClick(name){
