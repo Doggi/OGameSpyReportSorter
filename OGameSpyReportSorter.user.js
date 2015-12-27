@@ -2,7 +2,7 @@
 // @name        OGame spy report sorter
 // @namespace   ogame
 // @include     http://*.ogame.gameforge.com/game/index.php?page=messages*
-// @version     1.07
+// @version     1.08
 // @updateURL   https://github.com/Doggi/OGameSpyReportSorter/raw/master/OGameSpyReportSorter.user.js
 // @downloadURL https://github.com/Doggi/OGameSpyReportSorter/raw/master/OGameSpyReportSorter.user.js
 // @grant       none
@@ -67,6 +67,23 @@ function setStorageItem(key, value){
 function removeStorageItem(key){
     localStorage.removeItem(key);
 }
+
+function getSpyReportClick(name){
+    getStorageItem(name);
+}
+
+function renmoveSpyReportClick(name){
+    removeStorageItem(name);
+}
+
+function setSpyReportClick(name, value){
+    setStorageItem(name,value);
+}
+
+function oldSaveName2NewSaveName(name){
+    return name.split("_");
+}
+
 
 Number.decPoint = ',';
 Number.thousand_sep = '.';
@@ -184,7 +201,7 @@ var grosseTransporterAM = 203;
                     preBeute = this.rohstoffe;
                     pb = 0;
                     for (i = 1; pb !== null; i++) {
-                        pb = getStorageItem("spioreports_clicks_" + this.msgId + "_" + i + "_" + this.beute(preBeute));
+                        pb = getSpyReportClick("spioreports_clicks_" + this.msgId + "_" + i + "_" + this.beute(preBeute));
                         if (pb !== null) {
                             preBeute -= pb;
                         }
@@ -244,7 +261,7 @@ var grosseTransporterAM = 203;
                     .replace(/{{msg_id}}/g, element.msgId)
                     .replace(/{{ress}}/g, beute);
 
-                if (getStorageItem("spioreports_clicks_" + element.msgId + "_" + i + "_" + beute) === null) {
+                if (getSpyReportClick("spioreports_clicks_" + element.msgId + "_" + i + "_" + beute) === null) {
                     link_t = link_t.replace(/{{style}}/g, "color: green");
                 } else {
                     link_t = link_t.replace(/{{style}}/g, "color: red");
@@ -280,12 +297,12 @@ var grosseTransporterAM = 203;
             wave = $(this).data("wave");
             ress = $(this).data("ress");
 
-            value = getStorageItem("spioreports_clicks_" + msg + "_" + wave + "_" + ress);
+            value = getSpyReportClick("spioreports_clicks_" + msg + "_" + wave + "_" + ress);
 
             if (value !== null) {
                 return false;
             } else {
-                setStorageItem("spioreports_clicks_" + msg + "_" + wave + "_" + ress, ress);
+                setSpyReportClick("spioreports_clicks_" + msg + "_" + wave + "_" + ress, ress);
             }
         });
 
@@ -293,7 +310,7 @@ var grosseTransporterAM = 203;
             msg = $(this).data("msg-id");
             wave = $(this).data("wave");
             ress = $(this).data("ress");
-            removeStorageItem("spioreports_clicks_" + msg + "_" + wave + "_" + ress);
+            renmoveSpyReportClick("spioreports_clicks_" + msg + "_" + wave + "_" + ress);
         });
 
     }
