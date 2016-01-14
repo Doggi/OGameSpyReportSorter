@@ -2,7 +2,7 @@
 // @name        OGame spy report sorter
 // @namespace   ogame
 // @include     http://*.ogame.gameforge.com/game/index.php?page=messages*
-// @version     1.11
+// @version     1.12
 // @updateURL   https://github.com/Doggi/OGameSpyReportSorter/raw/master/OGameSpyReportSorter.user.js
 // @downloadURL https://github.com/Doggi/OGameSpyReportSorter/raw/master/OGameSpyReportSorter.user.js
 // @grant       none
@@ -132,6 +132,7 @@ var kleineTransporterAM = 202;
 var grosseTransporterKapazitaet = 25000;
 var grosseTransporterAM = 203;
 var storageNameClicks = "osrs_clicks";
+var isExecuted = false;
 
 (function () {
     var $ = window.jQuery;
@@ -155,8 +156,13 @@ var storageNameClicks = "osrs_clicks";
 
     //alles was nach dem laden passieren soll
     $(messagesTabXPath + " ul.pagination").waitUntilExists(function () {
-        console.log("ready wait until");
-        execute();
+        if( !isExecuted ) {
+            console.log("ready wait until");
+            execute();
+            isExecuted = true;
+        } else {
+            console.log("ready wait until, but its running");
+        }
     });
 
     function execute(){
