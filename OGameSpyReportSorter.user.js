@@ -2,7 +2,7 @@
 // @name        OGame spy report sorter
 // @namespace   ogame
 // @include     http://*.ogame.gameforge.com/game/index.php?page=messages*
-// @version     1.14
+// @version     1.15
 // @updateURL   https://github.com/Doggi/OGameSpyReportSorter/raw/master/OGameSpyReportSorter.user.js
 // @downloadURL https://github.com/Doggi/OGameSpyReportSorter/raw/master/OGameSpyReportSorter.user.js
 // @grant       none
@@ -254,7 +254,7 @@ var isExecuted = false;
 
 
         spios.forEach(function (element, index, array) {
-            $(messagesTabXPath + "ul.pagination:first").after(element.element);
+            $(messagesTabXPath + " ul.pagination:first").after(element.element);
             if(!element.isSpionagebericht()){
                 return false;
             }
