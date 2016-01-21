@@ -257,7 +257,8 @@ var isExecuted = false;
 
 
         spios.forEach(function (element, index, array) {
-            $(messagesTabXPath + " ul.pagination:first").after(element.element);
+            $(messagesTabXPath + " ul.pagination:last").before(element.element);
+
             if(!element.isSpionagebericht()){
                 return false;
             }
